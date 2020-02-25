@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
+import ImageView from 'react-native-image-view';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const productItems = [
   { id:0,
@@ -37,6 +39,13 @@ const productItems = [
     description:"Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
     imageUrl:"https://cnet3.cbsistatic.com/img/KEM_0EsoAP-9kOds2Fbal9Ww540=/1200x675/2017/08/14/ec0fa893-faf2-46c3-8933-6898773804ba/apple-macbook-air-2017-05.jpg",
     price:499
+  },
+  {
+    id:6,
+    name:"iPhone 11 Pro Max",
+    description:"Kogi skateboard tattooed, whatever portland fingerstache coloring book mlkshk leggings flannel dreamcatcher.",
+    imageUrl:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg",
+    price:1149
   }
 ];
 
@@ -50,7 +59,9 @@ export default function LinksScreen() {
         {products.map((el, key)=>(
           <View key={key} style={{flexDirection: 'row', padding: 15}}>
             <View style={{alignSelf: 'center'}}>
-              <Image style={{height: 60, width: 60, borderRadius: 20}} source={{uri: el.imageUrl}} />
+              <TouchableOpacity>
+                <Image style={{height: 60, width: 60, borderRadius: 20}} source={{uri: el.imageUrl}} />
+              </TouchableOpacity>             
             </View>
             <View style={{flex: 1, marginLeft: 15, justifyContent: 'center', borderBottomWidth: 0.25, borderBottomColor: 'grey', padding: 5}}>
               <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -79,7 +90,7 @@ export default function LinksScreen() {
           </View>
         ))}
         <View>
-          <Text style={{textAlign: 'center'}}>
+          <Text style={{textAlign: 'center', fontSize: 30, fontWeight: 'bold'}}>
             Total items in cart: {cart.length}
           </Text>
         </View>
